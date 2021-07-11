@@ -9,6 +9,8 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.Arguments;
 
 // import android.app.Activity;
 import android.util.Log;
@@ -32,7 +34,7 @@ public class ReadManagedConfigurationModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getRestrictions(ReadableArray restrictions, Promise promise) {
+    public void getAllRestrictions(Promise promise) {
         try {
             RestrictionsManager restrictionsManager =
             (RestrictionsManager) this.reactContext.getSystemService(Context.RESTRICTIONS_SERVICE);
@@ -41,41 +43,13 @@ public class ReadManagedConfigurationModule extends ReactContextBaseJavaModule {
                 Log.i("readmanaged", "no restrictions manager");
                 throw new RuntimeException("no restrictions manager");
             }
-
+            
             Bundle appRestrictions = restrictionsManager.getApplicationRestrictions();
-            WritableArray restrictionsValues = new WritableNativeArray();
-
-            for (int i = 0; i < restrictions.size(); i++) {
-                if (appRestrictions.containsKey(restrictions.getString(i))) {
-                    // restrictionsValues[i] = appRestrictions.getString(restrictions[i]);
-                    restrictionsValues.pushString(appRestrictions.getString(restrictions.getString(i)));
-                } else {
-                    restrictionsValues.pushNull();
-                }
-            }
-            promise.resolve(restrictionsValues);
+            WritableMap result = Arguments.fromBundle(appRestrictions);
+            promise.resolve(result);
         } catch(Exception e) {
             promise.reject(e);
         }
-        
-    }
 
-    @ReactMethod
-    public void getAllRestrictions(Callback callback) {
-        RestrictionsManager restrictionsManager =
-        (RestrictionsManager) this.reactContext.getSystemService(Context.RESTRICTIONS_SERVICE);
-
-        if (restrictionsManager == null) {
-            Log.i("readmanaged", "no restrictions manager");
-            return;
-        }
-        
-        Bundle appRestrictions = restrictionsManager.getApplicationRestrictions();
-        Log.i("readmanaged", "restrictions size " + appRestrictions.size() );
-        WritableNativeMap data = new WritableNativeMap();
-        for (String key : appRestrictions.keySet()){
-            data.putString(key, appRestrictions.getString(key));
-        }
-        callback.invoke(data);
     }
 }

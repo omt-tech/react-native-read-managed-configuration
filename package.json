@@ -2,18 +2,20 @@
   "name": "react-native-read-managed-configuration",
   "title": "React Native Read Managed Configuration",
   "version": "2.0.0",
-  "description": "TODO",
+  "description": "Reads managed configuration from android EMM",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-read-managed-configuration.git",
-    "baseUrl": "https://github.com/github_account/react-native-read-managed-configuration"
+    "url": "git+https://github.com/omt-tech/react-native-read-managed-configuration.git",
+    "baseUrl": "https://github.com/omt-tech/react-native-read-managed-configuration"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "emm",
+    "managed-configuration"
   ],
   "author": {
     "name": "Jin Park",

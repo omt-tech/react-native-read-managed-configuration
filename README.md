@@ -1,10 +1,12 @@
 # react-native-read-managed-configuration
 
+## Note this only works with android. this will not work with ios.
+
 ## Getting started
 
-`$ npm install react-native-read-managed-configuration --save`
+`$ npm install git://github.com/jinpark/react-native-read-managed-configuration.git#master --save`
 
-### Mostly automatic installation
+### Link required after installation if React Native < 0.60
 
 `$ react-native link react-native-read-managed-configuration`
 
@@ -12,6 +14,7 @@
 ```javascript
 import ReadManagedConfiguration from 'react-native-read-managed-configuration';
 
-// TODO: What to do with the module?
-ReadManagedConfiguration;
+const data = await ReadManagedConfiguration.getAllRestrictions();
+// do stuff with data
+// data = {managed_config_key1: managed_config_data1, managed_config_key2: managed_config_data2, ...}
 ```

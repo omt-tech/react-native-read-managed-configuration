@@ -15,7 +15,6 @@
 import ReadManagedConfiguration from 'react-native-read-managed-configuration';
 
 const data = await ReadManagedConfiguration.getAllRestrictions();
-// data will look like {keyOfconfig1: valueOfConfig1, keyOfConfig2: valueOfConfig2, ...}
 // do stuff with data
 // data = {managed_config_key1: managed_config_data1, managed_config_key2: managed_config_data2, ...}
 // this will not work with .then, .catch, .finally callbacks. only with async/await due to restrictions with react native native modules

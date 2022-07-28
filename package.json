@@ -1,7 +1,7 @@
 {
   "name": "react-native-read-managed-configuration",
   "title": "React Native Read Managed Configuration",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Reads managed configuration from android EMM",
   "main": "index.js",
   "scripts": {
@@ -25,11 +25,11 @@
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
   "peerDependencies": {
-    "react": "^16.8.1",
+    "react": "^16.8.1 || ^17.0.0",
     "react-native": ">=0.60.0-rc.0 <1.0.x"
   },
   "devDependencies": {
-    "react": "^16.9.0",
+    "react": "^16.9.0 || ^17.0.0",
     "react-native": "^0.61.5"
   }
 }
